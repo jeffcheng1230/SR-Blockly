@@ -1,0 +1,11 @@
+#VRML_SIM R2021a utf8
+
+PROTO BlocklySupervisor [
+]
+{
+	Robot {
+		controller "supervisor"
+		supervisor TRUE
+		window "blockly"
+	}
+}
