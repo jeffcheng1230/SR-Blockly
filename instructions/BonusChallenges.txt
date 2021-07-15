@@ -1,4 +1,4 @@
-Note: not all challenges require lists, but some do.
+Note: not all challenges require lists, but some do. Also to test your programs, you can just come up with random numbers yourself – you don’t have to use the time to randomly generate numbers unless you want to.
 
 1.
 Begin with a variable set to a certain dollar amount (no decimal). Create a program that prints out how to pay using the fewest amount of bills possible (only $1, $5, $10, $20 bills). For example:
@@ -11,3 +11,26 @@ $20 bills: 4
 
 2.
 Begin with a variable assigned to a random integer value of your choice. Print out the number of digits that variable has (must account for a number of any length).
+
+3.
+Start with 4 variables a, b, c, d assigned to four random integer values of your choice. Use exactly 4 if statements to determine which variable contains the largest number and which variable contains the smallest number.
+
+4.
+Background info:
+The letter e is a mathematical constant that is pretty similar to pi. It begins 2.718… and continues infinitely without a repeating pattern (i.e. it never does …33333 or …313131). It’s very useful in many areas, especially calculus, and is known as Euler’s constant. To calculate it, you must learn a new operation (or maybe it’s not new) called factorial. Factorial is represented with an exclamation mark to the right of a number, and we say that we “take the factorial of a number”. For example:
+3! is “three factorial” or “the factorial of three”
+It’s mathematical definition:
+3! = 3 * 2 * 1
+5! = 5 * 4 * 3 * 2 * 1
+I’m sure you see the pattern by now. Anyways, to calculate the value of e, you can use the following formula:
+e = 1 + 1 / (1!) + 1 / (2!) + 1 / (3!) + …
+To get the exact value of e, you must do this formula infinitely. But since that’s impossible, an approximation will have to do for now.
+The Challenge:
+Start with a variable set to a random integer value. That number represents the last factorial that you will calculate. For example:
+If your variable = 3, your last term will have a 3!
+e = 1 + 1 / (1!) + 1 / (2!) + 1 / (3!)
+
+If your variable = 5, your last term will have a 5!
+e = 1 + 1 / (1!) + 1 / (2!) + 1 / (3!) + 1 / (4!) + 1 / (5!)
+
+Your challenge is to print out your approximate value of e that you calculated using the formula. You’ll notice that the higher your variable is set, the more terms your variable will have, and the closer your answer will be to the actual value of e (google “e constant value” and click around for the exact value). However, the higher your variable is, the more calculations that are necessary and the more effort your computer has to expend – see how high you can go before the process takes a delayed amount of time.
