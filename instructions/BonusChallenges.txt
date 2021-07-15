@@ -1,0 +1,13 @@
+Note: not all challenges require lists, but some do.
+
+1.
+Begin with a variable set to a certain dollar amount (no decimal). Create a program that prints out how to pay using the fewest amount of bills possible (only $1, $5, $10, $20 bills). For example:
+Begin with x = 93 (dollars)
+Your program should print out:
+$20 bills: 4
+$20 bills: 4
+$20 bills: 4
+$20 bills: 4
+
+2.
+Begin with a variable assigned to a random integer value of your choice. Print out the number of digits that variable has (must account for a number of any length).
