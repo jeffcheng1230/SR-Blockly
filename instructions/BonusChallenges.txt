@@ -34,3 +34,9 @@ If your variable = 5, your last term will have a 5!
 e = 1 + 1 / (1!) + 1 / (2!) + 1 / (3!) + 1 / (4!) + 1 / (5!)
 
 Your challenge is to print out your approximate value of e that you calculated using the formula. You’ll notice that the higher your variable is set, the more terms your variable will have, and the closer your answer will be to the actual value of e (google “e constant value” and click around for the exact value). However, the higher your variable is, the more calculations that are necessary and the more effort your computer has to expend – see how high you can go before the process takes a delayed amount of time.
+
+5. You should use a list for this challenge. Begin with a variable set to a large integer value. Print out a table that states how many times each digit appears. For example:
+Starting value = 41271092
+You should print the follow:
+Digit:		0   1   2   3   4   5   6   7   8   9
+Occurrences:      1   2   2   0   1   0   0   1   0   1
