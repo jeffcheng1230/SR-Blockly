@@ -1,6 +1,79 @@
-arm1 = None
-arm2 = None
-arm3 = None
+rotations = None
+leftSpeed = None
+rightSpeed = None
+left_wheel = None
+right_wheel = None
+
+# Describe this function...
+def stop():
+  global rotations, leftSpeed, rightSpeed, left_wheel, right_wheel
+  getEncoders(encObj[left_wheel])
+  lastEncReset[encObj[left_wheel]] = encCount[encObj[left_wheel]]
+  getEncoders(encObj[right_wheel])
+  lastEncReset[encObj[right_wheel]] = encCount[encObj[right_wheel]]
+  set_speed_for_both_motors(0, 0)
+
+# Describe this function...
+def setup_motor_objs():
+  global rotations, leftSpeed, rightSpeed, left_wheel, right_wheel
+  left_wheel = myRobot.getDevice("left wheel")
+  encObj[left_wheel] = left_wheel.getPositionSensor()
+  left_wheel.setPosition(float("inf"))
+  left_wheel.setVelocity(0)
+  encObj[left_wheel].enable(timeStep)
+  encCount[left_wheel] = 0
+  lastEncReset[encObj[left_wheel]] = 0
+
+  right_wheel = myRobot.getDevice("right wheel")
+  encObj[right_wheel] = right_wheel.getPositionSensor()
+  right_wheel.setPosition(float("inf"))
+  right_wheel.setVelocity(0)
+  encObj[right_wheel].enable(timeStep)
+  encCount[right_wheel] = 0
+  lastEncReset[encObj[right_wheel]] = 0
+
+
+# Describe this function...
+def turn_right():
+  global rotations, leftSpeed, rightSpeed, left_wheel, right_wheel
+  getEncoders(encObj[left_wheel])
+  lastEncReset[encObj[left_wheel]] = encCount[encObj[left_wheel]]
+  getEncoders(encObj[right_wheel])
+  lastEncReset[encObj[right_wheel]] = encCount[encObj[right_wheel]]
+  while myRobot.step(timeStep) != -1 and (getEncoders(encObj[left_wheel]) or encCount[encObj[left_wheel]] - lastEncReset[encObj[left_wheel]]) <= 160:
+    if gyroEnable:
+      updateGyro()
+    set_speed_for_both_motors(50, -48)
+
+# Describe this function...
+def turn_left():
+  global rotations, leftSpeed, rightSpeed, left_wheel, right_wheel
+  getEncoders(encObj[left_wheel])
+  lastEncReset[encObj[left_wheel]] = encCount[encObj[left_wheel]]
+  getEncoders(encObj[right_wheel])
+  lastEncReset[encObj[right_wheel]] = encCount[encObj[right_wheel]]
+  while myRobot.step(timeStep) != -1 and (getEncoders(encObj[right_wheel]) or encCount[encObj[right_wheel]] - lastEncReset[encObj[right_wheel]]) <= 160:
+    if gyroEnable:
+      updateGyro()
+    set_speed_for_both_motors(-48, 50)
+
+# Describe this function...
+def move_forward_for___of_rotations(rotations):
+  global leftSpeed, rightSpeed, left_wheel, right_wheel
+  getEncoders(encObj[left_wheel])
+  lastEncReset[encObj[left_wheel]] = encCount[encObj[left_wheel]]
+  getEncoders(encObj[right_wheel])
+  lastEncReset[encObj[right_wheel]] = encCount[encObj[right_wheel]]
+  while myRobot.step(timeStep) != -1 and (getEncoders(encObj[left_wheel]) or encCount[encObj[left_wheel]] - lastEncReset[encObj[left_wheel]]) <= rotations * 360:
+    if gyroEnable:
+      updateGyro()
+    set_speed_for_both_motors(50, 50)
+
+# Describe this function...
+def set_speed_for_both_motors(leftSpeed, rightSpeed):
+  global rotations, left_wheel, right_wheel
+  left_wheel.setVelocity((leftSpeed / 100.0) * left_wheel.getMaxVelocity())
+  right_wheel.setVelocity((rightSpeed / 100.0) * right_wheel.getMaxVelocity())
 
 
 from controller import Robot
@@ -68,39 +141,25 @@ encCount = {}
 lastEncReset = {}
 myRobot.step(timeStep)
 
-arm1 = myRobot.getDevice("arm1")
-encObj[arm1] = arm1.getPositionSensor()
-arm1.setPosition(float("inf"))
-arm1.setVelocity(0)
-encObj[arm1].enable(timeStep)
-encCount[arm1] = 0
-lastEncReset[encObj[arm1]] = 0
+left_wheel = myRobot.getDevice("left wheel")
+encObj[left_wheel] = left_wheel.getPositionSensor()
+left_wheel.setPosition(float("inf"))
+left_wheel.setVelocity(0)
+encObj[left_wheel].enable(timeStep)
+encCount[left_wheel] = 0
+lastEncReset[encObj[left_wheel]] = 0
 
-arm2 = myRobot.getDevice("arm2")
-encObj[arm2] = arm2.getPositionSensor()
-arm2.setPosition(float("inf"))
-arm2.setVelocity(0)
-encObj[arm2].enable(timeStep)
-encCount[arm2] = 0
-lastEncReset[encObj[arm2]] = 0
+right_wheel = myRobot.getDevice("right wheel")
+encObj[right_wheel] = right_wheel.getPositionSensor()
+right_wheel.setPosition(float("inf"))
+right_wheel.setVelocity(0)
+encObj[right_wheel].enable(timeStep)
+encCount[right_wheel] = 0
+lastEncReset[encObj[right_wheel]] = 0
 
-arm3 = myRobot.getDevice("arm3")
-encObj[arm3] = arm3.getPositionSensor()
-arm3.setPosition(float("inf"))
-arm3.setVelocity(0)
-encObj[arm3].enable(timeStep)
-encCount[arm3] = 0
-lastEncReset[encObj[arm3]] = 0
-
-arm2.setVelocity(((-30) / 100.0) * arm2.getMaxVelocity())
-initTime = myRobot.getTime()
-while myRobot.step(timeStep) != -1:
-  if (myRobot.getTime() - initTime) * 1000.0 > 1000:
-    break
-arm2.setVelocity((0 / 100.0) * arm2.getMaxVelocity())
-arm3.setVelocity((30 / 100.0) * arm3.getMaxVelocity())
-initTime = myRobot.getTime()
-while myRobot.step(timeStep) != -1:
-  if (myRobot.getTime() - initTime) * 1000.0 > 400:
-    break
-arm3.setVelocity((0 / 100.0) * arm3.getMaxVelocity())
+print(getEncoders(encObj[left_wheel]) or encCount[encObj[left_wheel]] - lastEncReset[encObj[left_wheel]])
+stop()
+for count in range(4):
+  move_forward_for___of_rotations(3.55)
+  turn_right()
+  stop()
