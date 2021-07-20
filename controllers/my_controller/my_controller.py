@@ -1,4 +1,6 @@
-dist = None
+sensor = None
+right_motor = None
+left_motor = None
 
 
 from controller import Robot
@@ -66,9 +68,38 @@ encCount = {}
 lastEncReset = {}
 myRobot.step(timeStep)
 
-dist = myRobot.getDevice('distanceSensor')
-dist.enable(timeStep)
-while myRobot.step(timeStep) != -1 and True:
+sensor = myRobot.getDevice('distance sensor')
+sensor.enable(timeStep)
+right_motor = myRobot.getDevice("right wheel")
+encObj[right_motor] = right_motor.getPositionSensor()
+right_motor.setPosition(float("inf"))
+right_motor.setVelocity(0)
+encObj[right_motor].enable(timeStep)
+encCount[right_motor] = 0
+lastEncReset[encObj[right_motor]] = 0
+
+left_motor = myRobot.getDevice("left wheel")
+encObj[left_motor] = left_motor.getPositionSensor()
+left_motor.setPosition(float("inf"))
+left_motor.setVelocity(0)
+encObj[left_motor].enable(timeStep)
+encCount[left_motor] = 0
+lastEncReset[encObj[left_motor]] = 0
+
+while myRobot.step(timeStep) != -1 and 1:
   if gyroEnable:
     updateGyro()
-  print(dist.getValue())
+  if (sensor.getValue()) > 100:
+    left_motor.setVelocity((70 / 100.0) * left_motor.getMaxVelocity())
+    right_motor.setVelocity((70 / 100.0) * right_motor.getMaxVelocity())
+  else:
+    while myRobot.step(timeStep) != -1 and (sensor.getValue()) <= 100 and (sensor.getValue()) >= 50:
+      if gyroEnable:
+        updateGyro()
+      right_motor.setVelocity(((sensor.getValue()) / 100.0) * right_motor.getMaxVelocity())
+      left_motor.setVelocity(((sensor.getValue()) / 100.0) * left_motor.getMaxVelocity())
+      print(sensor.getValue())
+      print(sensor.getValue())
+    right_motor.setVelocity((0 / 100.0) * right_motor.getMaxVelocity())
+    left_motor.setVelocity((0 / 100.0) * left_motor.getMaxVelocity())
+    break
