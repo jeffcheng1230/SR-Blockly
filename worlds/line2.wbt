@@ -10,12 +10,6 @@ TexturedBackground {
 }
 TexturedBackgroundLight {
 }
-DEF BlocklySupervisor Robot {
-  name "Supervisor"
-  controller "supervisor"
-  supervisor TRUE
-  window "blockly"
-}
 DEF Tiles Group {
   children [
     Solid {

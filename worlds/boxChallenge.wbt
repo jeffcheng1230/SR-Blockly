@@ -1,9 +1,10 @@
-#VRML_SIM R2020a utf8
+#VRML_SIM R2021a utf8
 WorldInfo {
+  coordinateSystem "NUE"
 }
 Viewpoint {
-  orientation -0.9999773783711899 -0.004807906004672923 0.004703911747918469 0.9881255615201564
-  position 0.3929842954992496 6.495822700085417 4.807115773512063
+  orientation -0.4784336176704151 -0.7990591109236779 -0.364150807678166 1.5387668240644559
+  position -1.5455373258194842 0.7136738965350968 0.8510043668571611
 }
 TexturedBackground {
 }
@@ -25,31 +26,18 @@ Robot {
   window "blockly"
 }
 DEF ROBOT Pioneer3dx {
-  translation -1.06 0.0975 1.03
+  hidden position_0_0 -2.1958706448748504e-11
+  hidden position_0_1 1.1015244557309163e-10
+  hidden position_0_2 1.0552274803636226e-10
+  hidden position_1_0 -0.04488843478921344
+  hidden rotation_2 -1 0 0 0.044888434789210854
+  translation -1.060000108423495 0.09500486209072698 1.032866638247719
+  rotation 0.9999999992855089 5.207119606006269e-07 3.779829872389732e-05 0.029348752305746413
   controller "my_controller"
   extensionSlot [
-    Camera {
-      translation 0.01 0 0
-      rotation -1 0 0 1.5708
-      name "light sensor"
-      width 1
-      height 1
-    }
-    DistanceSensor {
-      lookupTable [
-        0 0 0
-				10 1000 0
-      ]
-    }
-    GPS {
-    }
-    Gyro {
-    }
-		Camera {
-      translation 0 0 -0.14
-      rotation 0 0 1 0
-      recognition Recognition {
-      }
+    DistSensor {
+      translation -0.000199083 0 -0.25
+      rotation 0 1 0 1.57159
     }
   ]
 }
