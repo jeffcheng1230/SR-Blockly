@@ -3,8 +3,8 @@ WorldInfo {
   coordinateSystem "NUE"
 }
 Viewpoint {
-  orientation 0.04996250206434664 -0.9790112344102805 -0.19758732572189236 3.6269461341484894
-  position 0.584132767804753 0.4388254895941428 -0.6903369373877389
+  orientation -0.7765788929881504 -0.4874914170916469 -0.39909565423251203 1.6235573106554044
+  position -0.047157303554360104 0.9408031260823394 0.13819106524131505
 }
 TexturedBackground {
 }
@@ -206,7 +206,8 @@ DEF Tiles Group {
   ]
 }
 Robot {
-  translation 0 0.0975 0
+  translation -0.0567622 0.0975 0.0137624
+  rotation 0 1 0 -1.5707953071795862
   scale 0.3 0.3 0.3
   children [
     DEF BODY Transform {
@@ -3102,7 +3103,7 @@ Robot {
     Group {
       children [
         Camera {
-          translation 0.26 0 -0.02
+          translation 0 0 -0.19
           rotation 1 0 0 -1.5707953071795862
           children [
             Lidar {
@@ -3374,7 +3375,7 @@ Robot {
       0 0.06 0.06
     ]
   }
-  controller "pioneer3dx_collision_avoidance"
+  controller "my_controller"
 }
 BlocklySupervisor {
 }
