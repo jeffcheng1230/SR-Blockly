@@ -1,6 +1,5 @@
-colorSensor = None
-right_Motor = None
-left_Motor = None
+lm = None
+rm = None
 
 
 from controller import Robot
@@ -68,25 +67,48 @@ encCount = {}
 lastEncReset = {}
 myRobot.step(timeStep)
 
-colorSensor = myRobot.getDevice('colorSensor')
-colorSensor.enable(timeStep)
-right_Motor = myRobot.getDevice("right wheel")
-encObj[right_Motor] = right_Motor.getPositionSensor()
-right_Motor.setPosition(float("inf"))
-right_Motor.setVelocity(0)
-encObj[right_Motor].enable(timeStep)
-encCount[right_Motor] = 0
-lastEncReset[encObj[right_Motor]] = 0
+lm = myRobot.getDevice("left wheel")
+encObj[lm] = lm.getPositionSensor()
+lm.setPosition(float("inf"))
+lm.setVelocity(0)
+encObj[lm].enable(timeStep)
+encCount[lm] = 0
+lastEncReset[encObj[lm]] = 0
 
-left_Motor = myRobot.getDevice("left wheel")
-encObj[left_Motor] = left_Motor.getPositionSensor()
-left_Motor.setPosition(float("inf"))
-left_Motor.setVelocity(0)
-encObj[left_Motor].enable(timeStep)
-encCount[left_Motor] = 0
-lastEncReset[encObj[left_Motor]] = 0
+rm = myRobot.getDevice("right wheel")
+encObj[rm] = rm.getPositionSensor()
+rm.setPosition(float("inf"))
+rm.setVelocity(0)
+encObj[rm].enable(timeStep)
+encCount[rm] = 0
+lastEncReset[encObj[rm]] = 0
 
-while myRobot.step(timeStep) != -1 and True:
-  if gyroEnable:
-    updateGyro()
-  print(getLSGray(colorSensor.getImageArray()))
+for count in range(4):
+  lm.setVelocity((40 / 100.0) * lm.getMaxVelocity())
+  rm.setVelocity((40 / 100.0) * rm.getMaxVelocity())
+  getEncoders(encObj[lm])
+  lastEncReset[encObj[lm]] = encCount[encObj[lm]]
+  while myRobot.step(timeStep) != -1 and (getEncoders(encObj[lm]) or encCount[encObj[lm]] - lastEncReset[encObj[lm]]) < 1300:
+    if gyroEnable:
+      updateGyro()
+    pass
+  lm.setVelocity((0 / 100.0) * lm.getMaxVelocity())
+  rm.setVelocity((0 / 100.0) * rm.getMaxVelocity())
+  initTime = myRobot.getTime()
+  while myRobot.step(timeStep) != -1:
+    if (myRobot.getTime() - initTime) * 1000.0 > 500:
+      break
+  lm.setVelocity((32 / 100.0) * lm.getMaxVelocity())
+  rm.setVelocity(((-32) / 100.0) * rm.getMaxVelocity())
+  getEncoders(encObj[lm])
+  lastEncReset[encObj[lm]] = encCount[encObj[lm]]
+  while myRobot.step(timeStep) != -1 and (getEncoders(encObj[lm]) or encCount[encObj[lm]] - lastEncReset[encObj[lm]]) < 151.3:
+    if gyroEnable:
+      updateGyro()
+    pass
+  lm.setVelocity((0 / 100.0) * lm.getMaxVelocity())
+  rm.setVelocity((0 / 100.0) * rm.getMaxVelocity())
+  initTime = myRobot.getTime()
+  while myRobot.step(timeStep) != -1:
+    if (myRobot.getTime() - initTime) * 1000.0 > 500:
+      break

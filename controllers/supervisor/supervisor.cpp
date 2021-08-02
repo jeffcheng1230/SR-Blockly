@@ -64,7 +64,7 @@ STARTUPINFO si;
     return 0;
   }
 #endif
-  
+  return 0;
   // create the Robot instance.
   Supervisor *supervisor = new Supervisor();
 

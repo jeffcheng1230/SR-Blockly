@@ -57,7 +57,7 @@ Blockly.Python['math_arithmetic'] = function(block) {
   var order = tuple[1];
   var argument0 = Blockly.Python.valueToCode(block, 'A', order) || '0';
   var argument1 = Blockly.Python.valueToCode(block, 'B', order) || '0';
-  var code = argument0 + operator + argument1;
+  var code = 'float(' + argument0 + ')' + operator + 'float(' + argument1 + ')';
   return [code, order];
   // In case of 'DIVIDE', division between integers returns different results
   // in Python 2 and 3. However, is not an issue since Blockly does not
