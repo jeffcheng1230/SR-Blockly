@@ -1,0 +1,2 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(517,5): warning MSB8029: The Intermediate directory or Output directory cannot reside under the Temporary directory as it could lead to issues with incremental build.
+LINK : fatal error LNK1104: cannot open file 'C:\Users\adutt\Desktop\Aditya\SR\Dev Group\SR-Blockly-main\controllers\ScaledUpController\ScaledUpController.exe'

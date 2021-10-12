@@ -1,0 +1,37 @@
+#VRML_SIM R2021a utf8
+#rescaledFresh314
+
+PROTO ColorSensorRescaled [
+	field SFVec3f    translation   0 0 0
+	field SFRotation rotation      1 0 0 -1.57
+	field SFString   name          "leftSens"
+]
+
+{
+	Camera {
+		translation IS translation
+		rotation IS rotation
+		children [
+			Solid {
+				translation 0 0 0
+				rotation 0 0 1 1.57
+				scale 0.01 0.01 0.01
+				children [
+					Shape {
+						appearance Appearance{
+							material Material{
+								diffuseColor 0 0.76 0.8
+							}
+						}
+						geometry Mesh{
+							url "meshes/testing6.stl"
+						}
+					}
+				]
+			}
+		]
+		name IS name
+		width 8
+		height 8
+	}
+}

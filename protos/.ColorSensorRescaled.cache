@@ -1,0 +1,11 @@
+Webots Proto Cache File version 1.5
+protoFileHash: 955ae6006c48731ae53c856dcb5a1458
+needsRobotAncestor: 1
+baseType: Camera
+slotType: 
+parameters: translation,rotation,name
+tags: 
+license: 
+licenseUrl: 
+documentationUrl: 
+info: rescaledFresh314\n

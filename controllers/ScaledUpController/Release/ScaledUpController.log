@@ -1,0 +1,69 @@
+﻿  Accelerometer.cpp
+C:\Users\adutt\AppData\Local\Programs\Webots\src\controller\cpp\Accelerometer.cpp(16,10): fatal error C1083: Cannot open include file: 'webots/accelerometer.h': No such file or directory
+  Brake.cpp
+C:\Users\adutt\AppData\Local\Programs\Webots\src\controller\cpp\Brake.cpp(16,10): fatal error C1083: Cannot open include file: 'webots/brake.h': No such file or directory
+  Camera.cpp
+C:\Users\adutt\AppData\Local\Programs\Webots\src\controller\cpp\Camera.cpp(16,10): fatal error C1083: Cannot open include file: 'webots/camera.h': No such file or directory
+  Compass.cpp
+C:\Users\adutt\AppData\Local\Programs\Webots\src\controller\cpp\Compass.cpp(16,10): fatal error C1083: Cannot open include file: 'webots/compass.h': No such file or directory
+  Connector.cpp
+C:\Users\adutt\AppData\Local\Programs\Webots\src\controller\cpp\Connector.cpp(16,10): fatal error C1083: Cannot open include file: 'webots/connector.h': No such file or directory
+  Device.cpp
+C:\Users\adutt\AppData\Local\Programs\Webots\src\controller\cpp\Device.cpp(16,10): fatal error C1083: Cannot open include file: 'webots/device.h': No such file or directory
+  DifferentialWheels.cpp
+C:\Users\adutt\AppData\Local\Programs\Webots\src\controller\cpp\DifferentialWheels.cpp(16,10): fatal error C1083: Cannot open include file: 'webots/differential_wheels.h': No such file or directory
+  Display.cpp
+C:\Users\adutt\AppData\Local\Programs\Webots\src\controller\cpp\Display.cpp(16,10): fatal error C1083: Cannot open include file: 'webots/display.h': No such file or directory
+  DistanceSensor.cpp
+C:\Users\adutt\AppData\Local\Programs\Webots\src\controller\cpp\DistanceSensor.cpp(16,10): fatal error C1083: Cannot open include file: 'webots/distance_sensor.h': No such file or directory
+  Emitter.cpp
+C:\Users\adutt\AppData\Local\Programs\Webots\src\controller\cpp\Emitter.cpp(16,10): fatal error C1083: Cannot open include file: 'webots/emitter.h': No such file or directory
+  Field.cpp
+C:\Users\adutt\AppData\Local\Programs\Webots\src\controller\cpp\Field.cpp(16,10): fatal error C1083: Cannot open include file: 'webots/supervisor.h': No such file or directory
+  GPS.cpp
+C:\Users\adutt\AppData\Local\Programs\Webots\src\controller\cpp\GPS.cpp(16,10): fatal error C1083: Cannot open include file: 'webots/gps.h': No such file or directory
+  Gyro.cpp
+C:\Users\adutt\AppData\Local\Programs\Webots\src\controller\cpp\Gyro.cpp(16,10): fatal error C1083: Cannot open include file: 'webots/gyro.h': No such file or directory
+  InertialUnit.cpp
+C:\Users\adutt\AppData\Local\Programs\Webots\src\controller\cpp\InertialUnit.cpp(16,10): fatal error C1083: Cannot open include file: 'webots/inertial_unit.h': No such file or directory
+  Joystick.cpp
+C:\Users\adutt\AppData\Local\Programs\Webots\src\controller\cpp\Joystick.cpp(16,10): fatal error C1083: Cannot open include file: 'webots/joystick.h': No such file or directory
+  Keyboard.cpp
+C:\Users\adutt\AppData\Local\Programs\Webots\src\controller\cpp\Keyboard.cpp(16,10): fatal error C1083: Cannot open include file: 'webots/keyboard.h': No such file or directory
+  LED.cpp
+C:\Users\adutt\AppData\Local\Programs\Webots\src\controller\cpp\LED.cpp(16,10): fatal error C1083: Cannot open include file: 'webots/led.h': No such file or directory
+  Lidar.cpp
+C:\Users\adutt\AppData\Local\Programs\Webots\src\controller\cpp\Lidar.cpp(16,10): fatal error C1083: Cannot open include file: 'webots/lidar.h': No such file or directory
+  LightSensor.cpp
+C:\Users\adutt\AppData\Local\Programs\Webots\src\controller\cpp\LightSensor.cpp(16,10): fatal error C1083: Cannot open include file: 'webots/light_sensor.h': No such file or directory
+  Motion.cpp
+C:\Users\adutt\AppData\Local\Programs\Webots\src\controller\cpp\Motion.cpp(16,10): fatal error C1083: Cannot open include file: 'webots/utils/motion.h': No such file or directory
+  Compiling...
+  Motor.cpp
+C:\Users\adutt\AppData\Local\Programs\Webots\src\controller\cpp\Motor.cpp(16,10): fatal error C1083: Cannot open include file: 'webots/device.h': No such file or directory
+  Mouse.cpp
+C:\Users\adutt\AppData\Local\Programs\Webots\src\controller\cpp\Mouse.cpp(16,10): fatal error C1083: Cannot open include file: 'webots/mouse.h': No such file or directory
+  Node.cpp
+C:\Users\adutt\AppData\Local\Programs\Webots\src\controller\cpp\Node.cpp(16,10): fatal error C1083: Cannot open include file: 'webots/supervisor.h': No such file or directory
+  Pen.cpp
+C:\Users\adutt\AppData\Local\Programs\Webots\src\controller\cpp\Pen.cpp(16,10): fatal error C1083: Cannot open include file: 'webots/pen.h': No such file or directory
+  PositionSensor.cpp
+C:\Users\adutt\AppData\Local\Programs\Webots\src\controller\cpp\PositionSensor.cpp(16,10): fatal error C1083: Cannot open include file: 'webots/device.h': No such file or directory
+  Radar.cpp
+C:\Users\adutt\AppData\Local\Programs\Webots\src\controller\cpp\Radar.cpp(16,10): fatal error C1083: Cannot open include file: 'webots/radar.h': No such file or directory
+  RangeFinder.cpp
+C:\Users\adutt\AppData\Local\Programs\Webots\src\controller\cpp\RangeFinder.cpp(16,10): fatal error C1083: Cannot open include file: 'webots/range_finder.h': No such file or directory
+  Receiver.cpp
+C:\Users\adutt\AppData\Local\Programs\Webots\src\controller\cpp\Receiver.cpp(16,10): fatal error C1083: Cannot open include file: 'webots/receiver.h': No such file or directory
+  Robot.cpp
+C:\Users\adutt\AppData\Local\Programs\Webots\src\controller\cpp\Robot.cpp(17,10): fatal error C1083: Cannot open include file: 'webots/device.h': No such file or directory
+  Skin.cpp
+C:\Users\adutt\AppData\Local\Programs\Webots\src\controller\cpp\Skin.cpp(16,10): fatal error C1083: Cannot open include file: 'webots/skin.h': No such file or directory
+  Speaker.cpp
+C:\Users\adutt\AppData\Local\Programs\Webots\src\controller\cpp\Speaker.cpp(16,10): fatal error C1083: Cannot open include file: 'webots/speaker.h': No such file or directory
+  Supervisor.cpp
+C:\Users\adutt\AppData\Local\Programs\Webots\src\controller\cpp\Supervisor.cpp(17,10): fatal error C1083: Cannot open include file: 'webots/supervisor.h': No such file or directory
+  TouchSensor.cpp
+C:\Users\adutt\AppData\Local\Programs\Webots\src\controller\cpp\TouchSensor.cpp(16,10): fatal error C1083: Cannot open include file: 'webots/touch_sensor.h': No such file or directory
+  ScaledUpController.cpp
+C:\Users\adutt\Desktop\Aditya\SR\Dev Group\SR-Blockly-main\controllers\ScaledUpController\ScaledUpController.cpp(10,10): fatal error C1083: Cannot open include file: 'webots/Robot.hpp': No such file or directory

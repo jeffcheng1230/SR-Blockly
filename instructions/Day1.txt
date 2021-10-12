@@ -1,0 +1,12 @@
+Link to GitHub repository: https://github.com/jeffcheng1230/SR-Blockly
+
+Webots installation link: https://cyberbotics.com/ 
+Python installation link: https://www.python.org/downloads/release/python-396/ - Windows installer (64-bit) (at the very bottom)
+Installation tutorial: https://www.youtube.com/watch?v=bWE3aRRMNLY&t=39s (0:39 – 4:04)
+
+Robot Benchmark:
+https://robotbenchmark.net/benchmark/viewpoint_control/simulation.php
+
+For Blockly.html:
+SR-Blockly -> plugins -> robot_windows -> blockly
+Right click on “blockly.html”, hover over “Open with”, click on “Google Chrome”

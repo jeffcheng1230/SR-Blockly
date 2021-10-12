@@ -1,0 +1,90 @@
+#VRML_SIM R2020a utf8
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.9999773783711899 -0.004807906004672923 0.004703911747918469 0.9881255615201564
+  position 0.39391351851101253 6.369255158175702 4.723704322950058
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+  luminosity 2
+}
+RectangleArena {
+  floorSize 4 4
+  wallHeight 0.4
+}
+Floor {
+  translation -1 0.001 -1
+  size 0.5 0.5
+  appearance Parquetry {
+    colorOverride 0 0 0
+    IBLStrength 0.1
+  }
+}
+Floor {
+  translation 1 0.001 -1
+  name "floor(1)"
+  size 0.5 0.5
+  appearance Parquetry {
+    colorOverride 0 0 0
+    IBLStrength 0.1
+  }
+}
+Floor {
+  translation 1 0.001 1
+  name "floor(2)"
+  size 0.5 0.5
+  appearance Parquetry {
+    colorOverride 0 0 0
+    IBLStrength 0.1
+  }
+}
+Floor {
+  translation -1 0.001 1
+  name "floor(3)"
+  size 0.5 0.5
+  appearance Parquetry {
+    colorOverride 0 0 0
+    IBLStrength 0.1
+  }
+}
+Wall {
+  translation -6.82932e-09 0 -0.000318529
+  rotation 0 1 0 1.57
+  size 1.5 0.4 1.5
+}
+Robot {
+  controller "supervisor"
+  supervisor TRUE
+  window "blockly"
+}
+DEF ROBOT Pioneer3dx {
+  translation -1.06 0.0975 1.03
+  controller "my_controller"
+  extensionSlot [
+    Camera {
+      translation 0.01 0 0
+      rotation -1 0 0 1.5708
+      name "light sensor"
+      width 1
+      height 1
+    }
+    DistanceSensor {
+      lookupTable [
+        0 0 0
+				10 1000 0
+      ]
+    }
+    GPS {
+    }
+    Gyro {
+    }
+		Camera {
+      translation 0 0 -0.14
+      rotation 0 0 1 0
+      recognition Recognition {
+      }
+    }
+  ]
+}
