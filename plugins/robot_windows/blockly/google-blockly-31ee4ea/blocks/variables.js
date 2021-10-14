@@ -51,7 +51,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   // Block for variable setter.
   {
     "type": "variables_set",
-    "message0": "%{BKY_VARIABLES_SET}",
+    "message0": "%1 = %2",
     "args0": [
       {
         "type": "field_variable",

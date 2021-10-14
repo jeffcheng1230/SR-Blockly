@@ -101,7 +101,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   // Block for getting the list length
   {
     "type": "lists_length",
-    "message0": "%{BKY_LISTS_LENGTH_TITLE}",
+    "message0": "%1.length()",
     "args0": [
       {
         "type": "input_value",
@@ -116,14 +116,11 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   },
   {
 	"type": "lists_append",
-	"message0": "to list %1 append %2 %3",
+	"message0": "%1.append(%2)",
 	"args0": [
 	  {
 		"type": "input_value",
 		"name": "LIST"
-	  },
-	  {
-		"type": "input_dummy"
 	  },
 	  {
 		"type": "input_value",
