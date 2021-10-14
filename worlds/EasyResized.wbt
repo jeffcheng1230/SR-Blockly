@@ -1074,7 +1074,7 @@ DEF Checkpoints Group {
 }
 Pioneer3dx {
   translation 0 0.0975 7.09
-  controller "<extern>"
+  controller "my_controller"
   extensionSlot [
     DistSensor {
       translation -0.000103523 0.07 -0.13

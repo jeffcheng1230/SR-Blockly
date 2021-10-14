@@ -1,7 +1,3 @@
-right_Motor = None
-left_Motor = None
-
-
 from controller import Robot
 from controller import GPS
 from controller import LightSensor
@@ -67,24 +63,7 @@ encCount = {}
 lastEncReset = {}
 myRobot.step(timeStep)
 
-right_Motor = myRobot.getDevice("right wheel")
-encObj[right_Motor] = right_Motor.getPositionSensor()
-right_Motor.setPosition(float("inf"))
-right_Motor.setVelocity(0)
-encObj[right_Motor].enable(timeStep)
-encCount[right_Motor] = 0
-lastEncReset[encObj[right_Motor]] = 0
-
-left_Motor = myRobot.getDevice("left wheel")
-encObj[left_Motor] = left_Motor.getPositionSensor()
-left_Motor.setPosition(float("inf"))
-left_Motor.setVelocity(0)
-encObj[left_Motor].enable(timeStep)
-encCount[left_Motor] = 0
-lastEncReset[encObj[left_Motor]] = 0
-
-while myRobot.step(timeStep) != -1 and True:
-  if gyroEnable:
-    updateGyro()
-  left_Motor.setVelocity((40 / 100.0) * left_Motor.getMaxVelocity())
-  right_Motor.setVelocity((40 / 100.0) * right_Motor.getMaxVelocity())
+print('hello')
+for x in range(20):
+	myRobot.step(timeStep)
+print('hello')

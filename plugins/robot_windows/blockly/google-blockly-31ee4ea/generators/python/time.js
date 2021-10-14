@@ -20,3 +20,11 @@ Blockly.Python['time_resettime'] = function(block) {
   var code = 'lastTimeReset = myRobot.getTime()\n';
   return code;
 };
+
+Blockly.Python['time_step'] = function(block) {
+  // TODO: Assemble Python into code variable.
+  var value = Blockly.Python.valueToCode(block, 'times', Blockly.Python.ORDER_ATOMIC) || 1;
+  var code = 'for x in range(' + value + '):\n' +
+			 '	myRobot.step(timeStep)\n';
+  return code;
+};

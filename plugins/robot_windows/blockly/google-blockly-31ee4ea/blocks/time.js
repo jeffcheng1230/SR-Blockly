@@ -35,5 +35,23 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 		"colour": timeColor,
 		"tooltip": "DESCRIPTION: Resets internal clock that began when simulation was run\nPARAMETERS: None\nRETURN: None",
 		"helpUrl": ""
+	},
+	{
+		"type": "time_step",
+		"message0": "step %1 times",
+		"args0": [
+		{
+		  "type": "input_value",
+		  "name": "times",
+		  "check": "Number",
+		  "align": "CENTRE"
+		}
+		],
+		"inputsInline": true,
+		"previousStatement": null,
+		"nextStatement": null,
+		"colour": timeColor,
+		"tooltip": "DESCRIPTION: steps the number of times as the input\nPARAMETERS: times(number of times to step)\nRETURN: None",
+		"helpUrl": ""
 	}
 ]);
