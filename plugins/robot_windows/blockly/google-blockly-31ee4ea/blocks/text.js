@@ -35,7 +35,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   // Block for text value
   {
     "type": "text",
-    "message0": "\" %1 \"",
+    "message0": "' %1 '",
     "args0": [{
       "type": "field_input",
       "name": "TEXT",
@@ -52,7 +52,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   },
   {//https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#vi4jwk
     "type": "concattext",
-    "message0": "\" %1 \" +  %2",
+    "message0": "' %1 ' +  %2",
     "args0": [
       {
         "type": "field_input",
@@ -73,7 +73,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   },
     {//https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#79ub38
 	  "type": "concattext2",
-	  "message0": "\"%1\" + %2 \"%3\"",
+	  "message0": "'%1' + %2 '%3'",
 	  "args0": [
 		{
 		  "type": "input_value",

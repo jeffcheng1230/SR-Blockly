@@ -38,13 +38,13 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   // Block for repeat n times (external number).
   {
     "type": "controls_repeat_ext",
-    "message0": "%{BKY_CONTROLS_REPEAT_TITLE}",
+    "message0": "repeat(%1):",
     "args0": [{
       "type": "input_value",
       "name": "TIMES",
       "check": "Number"
     }],
-    "message1": "%{BKY_CONTROLS_REPEAT_INPUT_DO} %1",
+    "message1": "%1",
     "args1": [{
       "type": "input_statement",
       "name": "DO"
@@ -100,7 +100,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
         ]
       }
     ],
-    "message1": "%{BKY_CONTROLS_REPEAT_INPUT_DO} %1",
+    "message1": "%1",
     "args1": [{
       "type": "input_statement",
       "name": "DO"
@@ -114,7 +114,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   // Block for 'for' loop.
   {
     "type": "controls_for",
-    "message0": "%{BKY_CONTROLS_FOR_TITLE}",
+    "message0": "%{BKY_CONTROLS_FOR_TITLE}:",
     "args0": [
       {
         "type": "field_variable",
@@ -140,7 +140,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
         "align": "RIGHT"
       }
     ],
-    "message1": "%{BKY_CONTROLS_REPEAT_INPUT_DO} %1",
+    "message1": "%1",
     "args1": [{
       "type": "input_statement",
       "name": "DO"
@@ -158,7 +158,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   // Block for 'for each' loop.
   {
     "type": "controls_forEach",
-    "message0": "%{BKY_CONTROLS_FOREACH_TITLE}",
+    "message0": "%{BKY_CONTROLS_FOREACH_TITLE}:",
     "args0": [
       {
         "type": "field_variable",
@@ -171,7 +171,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
         "check": "Array"
       }
     ],
-    "message1": "%{BKY_CONTROLS_REPEAT_INPUT_DO} %1",
+    "message1": "%1",
     "args1": [{
       "type": "input_statement",
       "name": "DO"

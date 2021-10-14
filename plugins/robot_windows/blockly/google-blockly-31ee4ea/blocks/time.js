@@ -6,7 +6,7 @@ var timeColor = 80
 Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 	{ //https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#fya36y
 		"type": "time_delay",
-		"message0": "delay %1 ms",
+		"message0": "delay(%1)",
 		"args0": [
 			{
 				"type": "input_value",
@@ -21,7 +21,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 	},
 	{ //https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#9iwcmr
 		"type": "time_gettime",
-		"message0": "getTime",
+		"message0": "getTime()",
 		"output": null,
 		"colour": timeColor,
 		"tooltip": "DESCRIPTION: Returns number of milliseconds elapsed since last resetTime\nPARAMETERS: None\nRETURN: Time elapsed since last reset: In milliseconds",
@@ -29,7 +29,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 	},
 	{ //https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#ch66ck
 		"type": "time_resettime",
-		"message0": "resetTime",
+		"message0": "resetTime()",
 		"previousStatement": null,
 		"nextStatement": null,
 		"colour": timeColor,
@@ -38,7 +38,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 	},
 	{
 		"type": "time_step",
-		"message0": "step %1 times",
+		"message0": "myRobot.step(%1)",
 		"args0": [
 		{
 		  "type": "input_value",

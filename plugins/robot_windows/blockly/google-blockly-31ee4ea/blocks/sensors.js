@@ -5,7 +5,7 @@ var sensorColor = 60
 Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 	{//blockly-demo.appspot.com/static/demos/blockfactory/index.html#9g4iqu
 	  "type": "sensors_initializegyro",
-	  "message0": "initializeGyro %1",
+	  "message0": "gyro = myRobot.initializeGyro('%1')",
 	  "args0": [
 	    {
 	      "type": "field_input",
@@ -21,7 +21,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 	},
 	{//blockly-demo.appspot.com/static/demos/blockfactory/index.html#of94vp
 	  "type": "sensors_initializegps",
-	  "message0": "initializeGPS %1",
+	  "message0": "GPS = myRobot.initializeGPS('%1')",
 	  "args0": [
 	    {
 	      "type": "field_input",
@@ -37,18 +37,18 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 	},
 	{//blockly-demo.appspot.com/static/demos/blockfactory/index.html#ezrcan
 	  "type": "sensors_initializesensor",
-	  "message0": "initializeOtherSensor %1 %2 %3",
+	  "message0": "%3 = myRobot.get%1('%2')",
 	  "args0": [
 	    {
 	      "type": "field_dropdown",
 	      "name": "sensorType",
 	      "options": [
 	        [
-	          "colorSensor",
+	          "ColorSensor",
 	          "colorSensor"
 	        ],
 	        [
-	          "distanceSensor",
+	          "DistanceSensor",
 	          "distanceSensor"
 	        ]
 	      ]
@@ -72,7 +72,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 	},
 	{//blockly-demo.appspot.com/static/demos/blockfactory/index.html#frv8ow
 	  "type": "sensors_getgpsvals",
-	  "message0": "getGPSVals",
+	  "message0": "getGPSVals()",
 	  "output": null,
 	  "colour": sensorColor,
 	  "tooltip": "DESCRIPTION: Returns GPS-based location of robot as a list \nPARAMETERS: None  \nRETURN: List w/ x-val, y-val, z-val",
@@ -80,7 +80,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 	},
 	{//blockly-demo.appspot.com/static/demos/blockfactory/index.html#2fp54a
 	  "type": "sensors_getgyrovals",
-	  "message0": "getGyroVals",
+	  "message0": "getGyroVals()",
 	  "output": null,
 	  "colour": sensorColor,
 	  "tooltip": "DESCRIPTION: Returns current angle of robot relative to its starting angle \nPARAMETERS: None  \nRETURN: Angle in degrees (angle can exceed 360 degrees if the robot made more than one full rotation)",
@@ -88,7 +88,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 	},
 	{//blockly-demo.appspot.com/static/demos/blockfactory/index.html#s4uci3
 	  "type": "sensors_getdistvals",
-	  "message0": "getDist %1",
+	  "message0": "%1.getDist()",
 	  "args0": [
 	    {
 	      "type": "field_variable",
@@ -103,7 +103,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 	},
 	{//blockly-demo.appspot.com/static/demos/blockfactory/index.html#7wopkw
 	  "type": "sensors_getcolor",
-	  "message0": "getColor %1",
+	  "message0": "%1.getColor()",
 	  "args0": [
 	    {
 	      "type": "field_variable",
@@ -118,7 +118,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 	},
 	{//blockly-demo.appspot.com/static/demos/blockfactory/index.html#7wopkw
 	  "type": "sensors_getgray",
-	  "message0": "getGray %1",
+	  "message0": "%1.getGray()",
 	  "args0": [
 	    {
 	      "type": "field_variable",

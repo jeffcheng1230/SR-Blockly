@@ -60,7 +60,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   // Block for if/elseif/else condition.
   {
     "type": "controls_if",
-    "message0": "%{BKY_CONTROLS_IF_MSG_IF} %1",
+    "message0": "if %1:",
     "args0": [
       {
         "type": "input_value",
@@ -68,7 +68,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
         "check": "Boolean"
       }
     ],
-    "message1": "%{BKY_CONTROLS_IF_MSG_THEN} %1",
+    "message1": "%1",
     "args1": [
       {
         "type": "input_statement",
@@ -85,7 +85,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   // If/else block that does not use a mutator.
   {
     "type": "controls_ifelse",
-    "message0": "%{BKY_CONTROLS_IF_MSG_IF} %1",
+    "message0": "if %1:",
     "args0": [
       {
         "type": "input_value",
@@ -93,14 +93,14 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
         "check": "Boolean"
       }
     ],
-    "message1": "%{BKY_CONTROLS_IF_MSG_THEN} %1",
+    "message1": "%1",
     "args1": [
       {
         "type": "input_statement",
         "name": "DO0"
       }
     ],
-    "message2": "%{BKY_CONTROLS_IF_MSG_ELSE} %1",
+    "message2": "else:%1",
     "args2": [
       {
         "type": "input_statement",
@@ -127,12 +127,12 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
         "type": "field_dropdown",
         "name": "OP",
         "options": [
-          ["=", "EQ"],
-          ["\u2260", "NEQ"],
-          ["\u200F<", "LT"],
-          ["\u200F\u2264", "LTE"],
-          ["\u200F>", "GT"],
-          ["\u200F\u2265", "GTE"]
+          ["==", "EQ"],
+          ["!=", "NEQ"],
+          ["<", "LT"],
+          ["<=", "LTE"],
+          [">", "GT"],
+          [">=", "GTE"]
         ]
       },
       {
@@ -160,8 +160,8 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
         "type": "field_dropdown",
         "name": "OP",
         "options": [
-          ["%{BKY_LOGIC_OPERATION_AND}", "AND"],
-          ["%{BKY_LOGIC_OPERATION_OR}", "OR"]
+          ["&&", "AND"],
+          ["||", "OR"]
         ]
       },
       {
@@ -468,13 +468,13 @@ Blockly.Constants.Logic.CONTROLS_IF_MUTATOR_MIXIN = {
     for (i = 1; i <= this.elseifCount_; i++) {
       this.appendValueInput('IF' + i)
           .setCheck('Boolean')
-          .appendField(Blockly.Msg['CONTROLS_IF_MSG_ELSEIF']);
+		  .appendField('else if:');
       this.appendStatementInput('DO' + i)
-          .appendField(Blockly.Msg['CONTROLS_IF_MSG_THEN']);
+          .appendField();
     }
     if (this.elseCount_) {
       this.appendStatementInput('ELSE')
-          .appendField(Blockly.Msg['CONTROLS_IF_MSG_ELSE']);
+          .appendField('else:');
     }
   },
   /**
