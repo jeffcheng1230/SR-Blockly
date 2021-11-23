@@ -1,3 +1,4 @@
+//THIS IS THE CONVERT TO PYTHON CODE
 /**
  * @license
  * Copyright 2012 Google LLC
@@ -18,9 +19,10 @@ goog.require('Blockly.Python');
 Blockly.Python['controls_if'] = function(block) {
   // If/elseif/else condition.
   var n = 0;
-  var code = '', branchCode, conditionCode;
+    var code = '', branchCode, conditionCode;
   if (Blockly.Python.STATEMENT_PREFIX) {
     // Automatic prefix insertion is switched off for this block.  Add manually.
+      
     code += Blockly.Python.injectId(Blockly.Python.STATEMENT_PREFIX, block);
   }
   do {
@@ -48,6 +50,44 @@ Blockly.Python['controls_if'] = function(block) {
     code += 'else:\n' + branchCode;
   }
   return code;
+};
+Blockly.Python['controls_switch'] = function (block) {
+    var n = 1;
+    var sw = Blockly.Python.valueToCode(block, 'SW0',
+        Blockly.Python.ORDER_NONE) || '0';
+    var code = '', branchCode, conditionCode;
+    if (Blockly.Python.STATEMENT_PREFIX) {
+        // Automatic prefix insertion is switched off for this block.  Add manually.
+        code += Blockly.Python.injectId(Blockly.Python.STATEMENT_PREFIX, block);
+    }
+
+    do {
+        conditionCode = Blockly.Python.valueToCode(block, 'CASE' + n.toString(),
+            Blockly.Python.ORDER_NONE) || '0';
+        // console.log("condition: " + conditionCode);
+        branchCode = Blockly.Python.statementToCode(block, 'DO' + n.toString) ||
+            Blockly.Python.PASS;
+        // console.log("branch: " + branchCode);
+        if (Blockly.Python.STATEMENT_SUFFIX) {
+            branchCode = Blockly.Python.prefixLines(
+                Blockly.Python.injectId(Blockly.Python.STATEMENT_SUFFIX, block),
+                Blockly.Python.INDENT) + branchCode;
+        }
+        code += (n == 1 ? 'if ' : 'elif ') + sw + ' == ' + conditionCode + ':\n' + branchCode;
+         ++n;
+    } while (block.getInput('CASE' + n));
+
+
+    branchCode = Blockly.Python.statementToCode(block, 'DEF0') ||
+        Blockly.Python.PASS;
+    if (Blockly.Python.STATEMENT_SUFFIX) {
+        branchCode = Blockly.Python.prefixLines(
+            Blockly.Python.injectId(Blockly.Python.STATEMENT_SUFFIX, block),
+            Blockly.Python.INDENT) + branchCode;
+    }
+    code += 'else:\n' + branchCode;
+
+    return code;
 };
 
 Blockly.Python['controls_ifelse'] = Blockly.Python['controls_if'];

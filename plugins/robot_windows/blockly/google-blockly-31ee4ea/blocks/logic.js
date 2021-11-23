@@ -1,3 +1,4 @@
+//THIS IS THE JSON PAGE
 /**
  * @license
  * Copyright 2012 Google LLC
@@ -38,6 +39,28 @@ document.getElementsByTagName('head')[0].appendChild(controlStyle);
 var controlColor = 240
 
 Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
+    // Block for switch/case condition.
+    {
+        "type": "controls_switch",
+        "message0": "switch%1:",
+        "args0": [
+            {
+                "type": "input_value",
+                "name": "SW0"
+            }
+        ],
+        "message1": "default: %1",
+        "args1": [
+            {
+                "type": "input_statement",
+                "name": "DEF0"
+            }
+        ],
+        "previousStatement": null,
+        "nextStatement": null,
+        "colour": controlColor,
+        "mutator": "controls_switch_mutator"
+    },
   // Block for boolean data type: true and false.
   {
     "type": "logic_boolean",
@@ -56,7 +79,8 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     "colour": controlColor,
     "tooltip": "%{BKY_LOGIC_BOOLEAN_TOOLTIP}",
     "helpUrl": "%{BKY_LOGIC_BOOLEAN_HELPURL}"
-  },
+    },
+    
   // Block for if/elseif/else condition.
   {
     "type": "controls_if",
@@ -234,11 +258,35 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   }
 ]);  // END JSON EXTRACT (Do not delete this comment.)
 
+
+Blockly.defineBlocksWithJsonArray([ // Mutator blocks. Do not extract.
+    // Block representing the if statement in the controls_switch mutator.
+    {
+        "type": "controls_switch_switch",
+        "message0": "switch",
+        //"message0": "Hello",
+        "nextStatement": null,
+        "enableContextMenu": false,
+        "colour": controlColor,
+    },
+    // Block representing the else-if statement in the controls_if mutator.
+    {
+        "type": "controls_switch_case",
+        "message0": "case",
+        // "message0": "Bye",
+        "previousStatement": null,
+        "nextStatement": null,
+        "enableContextMenu": false,
+        "colour": controlColor,
+    },
+]);
+
 Blockly.defineBlocksWithJsonArray([ // Mutator blocks. Do not extract.
   // Block representing the if statement in the controls_if mutator.
   {
     "type": "controls_if_if",
     "message0": "%{BKY_CONTROLS_IF_IF_TITLE_IF}",
+     //"message0": "Hello",
     "nextStatement": null,
     "enableContextMenu": false,
     "colour": controlColor,
@@ -247,7 +295,8 @@ Blockly.defineBlocksWithJsonArray([ // Mutator blocks. Do not extract.
   // Block representing the else-if statement in the controls_if mutator.
   {
     "type": "controls_if_elseif",
-    "message0": "%{BKY_CONTROLS_IF_ELSEIF_TITLE_ELSEIF}",
+      "message0": "%{BKY_CONTROLS_IF_ELSEIF_TITLE_ELSEIF}",
+     // "message0": "Bye",
     "previousStatement": null,
     "nextStatement": null,
     "enableContextMenu": false,
@@ -258,6 +307,7 @@ Blockly.defineBlocksWithJsonArray([ // Mutator blocks. Do not extract.
   {
     "type": "controls_if_else",
     "message0": "%{BKY_CONTROLS_IF_ELSE_TITLE_ELSE}",
+    //"message0": "byeAgain"
     "previousStatement": null,
     "enableContextMenu": false,
     "colour": controlColor,
@@ -497,9 +547,182 @@ Blockly.Constants.Logic.CONTROLS_IF_MUTATOR_MIXIN = {
   }
 };
 
+Blockly.Constants.Logic.CONTROLS_SWITCH_MUTATOR_MIXIN = {
+    caseCount_: 0,
+
+    /**
+     * Don't automatically add STATEMENT_PREFIX and STATEMENT_SUFFIX to generated
+     * code.  These will be handled manually in this block's generators.
+     */
+    suppressPrefixSuffix: true,
+
+    /**
+     * Create XML to represent the number of else-if and else inputs.
+     * @return {Element} XML storage element.
+     * @this {Blockly.Block}
+     */
+    mutationToDom: function () {
+        
+        if (!this.caseCount_) {
+            return null;
+        }
+        var container = Blockly.utils.xml.createElement('mutation');
+        if (this.caseCount_) {
+            container.setAttribute('case', this.caseCount_);
+        }
+        return container;
+    },
+    /**
+     * Parse XML to restore the else-if and else inputs.
+     * @param {!Element} xmlElement XML storage element.
+     * @this {Blockly.Block}
+     */
+    domToMutation: function (xmlElement) {
+        
+        this.caseCount_ = parseInt(xmlElement.getAttribute('case'), 10) || 0;
+        this.rebuildShape_();
+    },
+    /**
+     * Populate the mutator's dialog with this block's components.
+     * @param {!Blockly.Workspace} workspace Mutator's workspace.
+     * @return {!Blockly.Block} Root block in mutator.
+     * @this {Blockly.Block}
+     */
+    decompose: function (workspace) {
+        
+        var containerBlock = workspace.newBlock('controls_switch_switch');
+        containerBlock.initSvg();
+        var connection = containerBlock.nextConnection;
+        for (var i = 1; i <= this.caseCount_; i++) {
+            var caseBlock = workspace.newBlock('controls_switch_case');
+            caseBlock.initSvg();
+            connection.connect(caseBlock.previousConnection);
+            connection = caseBlock.nextConnection;
+        }
+        return containerBlock;
+    },
+    /**
+     * Reconfigure this block based on the mutator dialog's components.
+     * @param {!Blockly.Block} containerBlock Root block in mutator.
+     * @this {Blockly.Block}
+     */
+    compose: function (containerBlock) {
+        this.saveConnections(containerBlock);
+       
+        var clauseBlock = containerBlock.nextConnection.targetBlock();
+        // Count number of inputs.
+        this.caseCount_ = 0;
+        var valueConnections = [null];
+        var statementConnections = [null];
+        while (clauseBlock) {
+            switch (clauseBlock.type) {
+                case 'controls_switch_case':
+                    this.caseCount_++;
+                    valueConnections.push(clauseBlock.valueConnection_);
+                    statementConnections.push(clauseBlock.statementConnection_);
+                    break;
+                default:
+                    throw TypeError('Unknown block type: ' + clauseBlock.type);
+            }
+            clauseBlock = clauseBlock.nextConnection &&
+                clauseBlock.nextConnection.targetBlock();
+        }
+        this.updateShape_();
+        // Reconnect any child blocks.
+        this.reconnectChildBlocks_(valueConnections, statementConnections);
+    },
+    /**
+     * Store pointers to any connected child blocks.
+     * @param {!Blockly.Block} containerBlock Root block in mutator.
+     * @this {Blockly.Block}
+     */
+    saveConnections: function (containerBlock) {
+        
+        var clauseBlock = containerBlock.nextConnection.targetBlock();
+        var i = 1;
+        while (clauseBlock) {
+            switch (clauseBlock.type) {
+                case 'controls_switch_case':
+                    var inputCase = this.getInput('CASE' + i);
+                    var inputDo = this.getInput('DO' + i);
+                    clauseBlock.valueConnection_ =
+                        inputCase && inputCase.connection.targetConnection;
+                    clauseBlock.statementConnection_ =
+                        inputDo && inputDo.connection.targetConnection;
+                    i++;
+                    break;
+                default:
+                    throw TypeError('Unknown block type: ' + clauseBlock.type);
+            }
+            clauseBlock = clauseBlock.nextConnection &&
+                clauseBlock.nextConnection.targetBlock();
+        }
+    },
+    /**
+     * Reconstructs the block with all child blocks attached.
+     * @this {Blockly.Block}
+     */
+    rebuildShape_: function () {
+        var valueConnections = [null];
+        var statementConnections = [null];
+        var i = 1;
+        while (this.getInput('CASE' + i)) {
+            var inputCase = this.getInput('CASE' + i);
+            var inputDo = this.getInput('DO' + i);
+            valueConnections.push(inputCase.connection.targetConnection);
+            statementConnections.push(inputDo.connection.targetConnection);
+            i++;
+        }
+        this.updateShape_();
+        this.reconnectChildBlocks_(valueConnections, statementConnections);
+    },
+    /**
+   * Reconnects child blocks.
+   * @param {!Array.<?Blockly.RenderedConnection>} valueConnections List of
+   * value connections for 'if' input.
+   * @param {!Array.<?Blockly.RenderedConnection>} statementConnections List of
+   * statement connections for 'do' input.
+   * @param {?Blockly.RenderedConnection} elseStatementConnection Statement
+   * connection for else input.
+   * @this {Blockly.Block}
+   */
+    reconnectChildBlocks_: function (valueConnections, statementConnections) {
+        for (var i = 1; i <= this.caseCount_; i++) {
+            Blockly.Mutator.reconnect(valueConnections[i], this, 'CASE' + i);
+            Blockly.Mutator.reconnect(statementConnections[i], this, 'DO' + i);
+        }
+    },
+    /**
+     * Modify this block to have the correct number of inputs.
+     * @this {Blockly.Block}
+     * @private
+     */
+    updateShape_: function () {
+        // Delete everything.
+        var i = 1;
+        while (this.getInput('CASE' + i)) {
+            this.removeInput('CASE' + i);
+            this.removeInput('DO' + i);
+            i++;
+        }
+        // Rebuild block.
+        for (i = 1; i <= this.caseCount_; i++) {
+            this.appendValueInput('CASE' + i)
+                .appendField('case:');
+            this.appendStatementInput('DO' + i)
+                .appendField();
+        }
+     }  
+};
+  
+
 Blockly.Extensions.registerMutator('controls_if_mutator',
     Blockly.Constants.Logic.CONTROLS_IF_MUTATOR_MIXIN, null,
     ['controls_if_elseif', 'controls_if_else']);
+
+Blockly.Extensions.registerMutator('controls_switch_mutator',
+    Blockly.Constants.Logic.CONTROLS_SWITCH_MUTATOR_MIXIN, null,
+    ['controls_switch_case']);
 /**
  * "controls_if" extension function. Adds mutator, shape updating methods, and
  * dynamic tooltip to "controls_if" blocks.
