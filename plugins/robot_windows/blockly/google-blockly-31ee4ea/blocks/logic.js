@@ -708,7 +708,8 @@ Blockly.Constants.Logic.CONTROLS_SWITCH_MUTATOR_MIXIN = {
         // Rebuild block.
         for (i = 1; i <= this.caseCount_; i++) {
             this.appendValueInput('CASE' + i)
-                .appendField('case:');
+                .appendField('case');
+            this.appendDummyInput().appendField(':');
             this.appendStatementInput('DO' + i)
                 .appendField();
         }
