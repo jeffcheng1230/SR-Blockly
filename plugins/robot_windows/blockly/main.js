@@ -1,10 +1,11 @@
+import RobotWindow from 'https://cyberbotics.com/wwi/R2022b/RobotWindow.js'
 var modal = document.getElementById("myModal");
 var closeButton = document.getElementsByClassName("closeButton")[0];
 var saveList = document.getElementById("saveList");
 
 var title = document.getElementById("projectTitle");
-
-function openModal() {
+window.openModal = function() {
+//function openModal() {
 
     currCommand = SocketCommand.LIST_SAVES;
     ws.send(currCommand);
@@ -14,8 +15,10 @@ function openModal() {
     text.innerHTML = "<b>Loading...</b>";
     saveList.appendChild(text);
 
+    
 }
-function closeModal() {
+window.closeModal = function() {
+//function closeModal() {
     modal.style.display="none";
 }
 
@@ -129,7 +132,8 @@ if("WebSocket" in window) { //check if websockets are supported
     alert("WebSocket is not supported");
 }
 
-function saveLast() {
+window.saveLast = function() {
+//function saveLast() {
 
     currCommand = SocketCommand.SAVE_LAST;
     ws.send(currCommand);
@@ -137,7 +141,8 @@ function saveLast() {
     ws.send(title.textContent);
 }
 
-function convertCode() {
+window.convertCode = function() {
+//function convertCode() {
 
     currCommand = SocketCommand.SEND_CODE;
 
@@ -147,12 +152,14 @@ function convertCode() {
 
     saveLast();
 }
-function realTimeUpdate() {
+window.realTimeUpdate = function() {
+//function realTimeUpdate() {
     var code = Blockly.Python.workspaceToCode(workspace);
     document.getElementById('textCode').innerHTML = code;
 }
 
-function saveBlocks() {
+window.saveBlocks = function() {
+//function saveBlocks() {
 
     currCommand = SocketCommand.SAVE;
 
@@ -164,7 +171,8 @@ function saveBlocks() {
     saveLast();
 }
 
-function restore() {
+window.restore = function() {
+//function restore() {
 
     currCommand = SocketCommand.RESTORE_SAVE;
     ws.send(currCommand);
@@ -173,12 +181,14 @@ function restore() {
    title.textContent = this.innerText;
 }
 
-function receiveMessage(value) {
+window.receiveMessage = function() {
+//function receiveMessage(value) {
 
     console.log(value);
 }
 
-function onResize(e) {
+window.onResize = function() {
+//function onResize(e) {
     Blockly.svgResize(workspace);
 }
 
@@ -195,8 +205,9 @@ document.getElementById("projectTitle").addEventListener("keydown", (e) => {
 });
 
 window.onload = function() {
-    window.robotWindow = webots.window("Blockly");
-    window.robotWindow.receive = receiveMessage;
+    //window.robotWindow = webots.window("Blockly");
+    window.robotWindow = new RobotWindow();
+    window.robotWindow.receive = receive;
 }
 
 var container = document.getElementById("blocklyContainer");
