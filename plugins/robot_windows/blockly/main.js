@@ -1,3 +1,4 @@
+///testing update hello there lmnfao!!!
 import RobotWindow from 'https://cyberbotics.com/wwi/R2022b/RobotWindow.js'
 var modal = document.getElementById("myModal");
 var closeButton = document.getElementsByClassName("closeButton")[0];
@@ -69,7 +70,8 @@ if("WebSocket" in window) { //check if websockets are supported
 
                 saveList.innerHTML = "";
                 modal.style.display = "block";
-                for(i = 0; i< files.length; i++) {
+                
+                for(var i = 0; i< files.length; i++) {
                     
                     var link = document.createElement("a");
 
@@ -143,7 +145,7 @@ window.saveLast = function() {
 
 window.convertCode = function() {
 //function convertCode() {
-
+    console.log("hello there world?");
     currCommand = SocketCommand.SEND_CODE;
 
     var code = Blockly.Python.workspaceToCode(workspace);
@@ -155,6 +157,7 @@ window.convertCode = function() {
 window.realTimeUpdate = function() {
 //function realTimeUpdate() {
     var code = Blockly.Python.workspaceToCode(workspace);
+    console.log(code);
     document.getElementById('textCode').innerHTML = code;
 }
 

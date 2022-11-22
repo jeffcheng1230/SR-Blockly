@@ -1,0 +1,44 @@
+#VRML_SIM R2022b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/apartment_structure/protos/Wall.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/robots/adept/pioneer3/protos/Pioneer3dx.proto"
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.5910702921825065 0.6015054431497145 0.5374263778049527 2.1406550563079136
+  position -0.04681670929343251 0.6707343992088602 11.057138274464934
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+  luminosity 2
+}
+RectangleArena {
+  floorSize 4 4
+  wallHeight 0.4
+}
+Wall {
+  translation -0.710144 0 0.179116
+  rotation 0 1 0 1.57
+  size 0.4 1.5 1.5
+}
+
+Robot {
+  controller "supervisor"
+  supervisor TRUE
+  window "blockly"
+}
+
+DEF ROBOT Pioneer3dx {
+   hidden position_0_0 -2.1958706448748504e-11
+  hidden position_0_1 1.1015244557309163e-10
+  hidden position_0_2 1.0552274803636226e-10
+  hidden position_1_0 -0.04488843478921344
+  hidden rotation_2 -1 0 0 0.044888434789210854
+  translation -1.13429 0.0950049 1.03088
+  rotation 0.9999999992855089 5.207119606006269e-07 3.779829872389732e-05 0.029348752305746413
+  controller "my_controller"
+}

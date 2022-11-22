@@ -63,7 +63,8 @@ encCount = {}
 lastEncReset = {}
 myRobot.step(timeStep)
 
-print('hello')
-for x in range(20):
-	myRobot.step(timeStep)
-print('hello')
+print('hola')
+initTime = myRobot.getTime()
+while myRobot.step(timeStep) != -1:
+  if (myRobot.getTime() - initTime) * 1000.0 > 1000:
+    break
