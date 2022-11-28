@@ -154,12 +154,12 @@ window.convertCode = function() {
 
     saveLast();
 }
-window.realTimeUpdate = function() {
+/*window.realTimeUpdate = function() {
 //function realTimeUpdate() {
     var code = Blockly.Python.workspaceToCode(workspace);
     console.log(code);
     document.getElementById('textCode').innerHTML = code;
-}
+}*/
 
 window.saveBlocks = function() {
 //function saveBlocks() {
@@ -210,7 +210,7 @@ document.getElementById("projectTitle").addEventListener("keydown", (e) => {
 window.onload = function() {
     //window.robotWindow = webots.window("Blockly");
     window.robotWindow = new RobotWindow();
-    window.robotWindow.receive = receive;
+    window.robotWindow.receive = receiveMessage;
 }
 
 var container = document.getElementById("blocklyContainer");

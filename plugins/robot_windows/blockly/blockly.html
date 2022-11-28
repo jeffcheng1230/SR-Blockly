@@ -167,6 +167,12 @@
 <script src="main.js" type="module"></script>
 
     <script>
+      window.realTimeUpdate = function() {
+//function realTimeUpdate() {
+        var code = Blockly.Python.workspaceToCode(workspace);
+        //console.log(code);
+        document.getElementById('textCode').innerHTML = code;
+    }
     var workspace = Blockly.inject(blocklyDiv,
         {toolbox: document.getElementById('toolbox')});
     workspace.addChangeListener(realTimeUpdate);

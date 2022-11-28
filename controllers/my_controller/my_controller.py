@@ -63,8 +63,7 @@ encCount = {}
 lastEncReset = {}
 myRobot.step(timeStep)
 
-print('hola')
-initTime = myRobot.getTime()
-while myRobot.step(timeStep) != -1:
-  if (myRobot.getTime() - initTime) * 1000.0 > 1000:
-    break
+while myRobot.step(timeStep) != -1 and True:
+  if gyroEnable:
+    updateGyro()
+  print('ok')
