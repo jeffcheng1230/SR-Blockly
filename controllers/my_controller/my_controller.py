@@ -1,3 +1,7 @@
+lm = None
+rm = None
+
+
 from controller import Robot
 from controller import GPS
 from controller import LightSensor
@@ -63,7 +67,25 @@ encCount = {}
 lastEncReset = {}
 myRobot.step(timeStep)
 
+lm = myRobot.getDevice("left wheel")
+encObj[lm] = lm.getPositionSensor()
+lm.setPosition(float("inf"))
+lm.setVelocity(0)
+encObj[lm].enable(timeStep)
+encCount[lm] = 0
+lastEncReset[encObj[lm]] = 0
+
+rm = myRobot.getDevice("right wheel")
+encObj[rm] = rm.getPositionSensor()
+rm.setPosition(float("inf"))
+rm.setVelocity(0)
+encObj[rm].enable(timeStep)
+encCount[rm] = 0
+lastEncReset[encObj[rm]] = 0
+
+lm.setVelocity((20 / 100.0) * lm.getMaxVelocity())
+rm.setVelocity((20 / 100.0) * rm.getMaxVelocity())
 while myRobot.step(timeStep) != -1 and True:
   if gyroEnable:
     updateGyro()
-  print('ok')
+  print(getEncoders(encObj[lm]) or encCount[encObj[lm]] - lastEncReset[encObj[lm]])

@@ -1,5 +1,4 @@
-#VRML_SIM R2021a utf8
-
+#VRML_SIM R2023a utf8
 PROTO seesaw [
 	field SFVec3f    translation   0 .025 0
 	field SFRotation rotation      0 0 1 0
