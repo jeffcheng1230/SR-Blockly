@@ -12,8 +12,8 @@ EXTERNPROTO "../protos/DistSensor.proto"
 WorldInfo {
 }
 Viewpoint {
-  orientation 0.508994068427723 -0.4992572715622998 -0.7011898566704757 4.34653718939493
-  position 0.6535405665369028 -2.325313661263411 7.78997922872502
+  orientation 0.4566489568250165 -0.3861876272288582 -0.8014554552849263 4.332914494509073
+  position 0.7896100146586604 -4.55012822682343 9.520270135694156
 }
 TexturedBackground {
 }
@@ -30,10 +30,10 @@ Wall {
   size 0.4 1.5 1.5
 }
 Wall {
-  translation -1.25 -1 -0.00131686
+  translation -1.25 -1 -0.0024
   rotation 0 1 0 1.57
   name "BlackSquare1"
-  size 0.01 0.5 0.5
+  size 0.005 0.5 0.5
   appearance Roughcast {
     colorOverride 0 0 0
     textureTransform TextureTransform {
@@ -42,10 +42,10 @@ Wall {
   }
 }
 Wall {
-  translation 0.75 -1 0.000275789
+  translation 0.75 -1 -0.0024
   rotation 0 1 0 1.57
   name "BlackSquare2"
-  size 0.01 0.5 0.5
+  size 0.005 0.5 0.5
   appearance Roughcast {
     colorOverride 0 0 0
     textureTransform TextureTransform {
@@ -54,10 +54,10 @@ Wall {
   }
 }
 Wall {
-  translation 0.75 1 0.000275789
+  translation 0.75 1 -0.0024
   rotation 0 1 0 1.57
   name "BlackSquare3"
-  size 0.01 0.5 0.5
+  size 0.005 0.5 0.5
   appearance Roughcast {
     colorOverride 0 0 0
     textureTransform TextureTransform {
@@ -66,10 +66,10 @@ Wall {
   }
 }
 Wall {
-  translation -1.25 1 -0.00131688
+  translation -1.25 1 -0.0024
   rotation 0 1 0 1.57
   name "BlackSquare4"
-  size 0.01 0.5 0.5
+  size 0.005 0.5 0.5
   appearance Roughcast {
     colorOverride 0 0 0
     textureTransform TextureTransform {
@@ -83,14 +83,7 @@ Robot {
   window "blockly"
 }
 DEF ROBOT Pioneer3dx {
-  hidden position_0_0 -3.597996623589366e-10
-  hidden position_0_1 -3.420894678640707e-09
-  hidden position_0_2 -3.4348319744026412e-09
-  hidden rotation_1 0.5773502690511387 -0.5773502692588692 -0.5773502692588692 2.0943950002077303
-  hidden position_1_0 1.3929234345111142e-05
-  hidden rotation_2 1 0 0 1.392923055888933e-05
-  hidden rotation_4 0.5773502698479772 -0.5773502698479772 -0.5773502678729227 2.0943950019750543
-  hidden rotation_9 0.5773502698506595 -0.5773502698506596 -0.5773502678675583 2.0943950019831012
+  hidden rotation_1 0.5773502689126517 -0.5773502693281127 -0.5773502693281127 2.094395000415461
   translation -0.9408022808181088 -1.0232828288324376 0.09874637949305679
   rotation -0.005546291078730396 -0.944716477609823 -0.32784144885563055 0.037524426559871225
   controller "my_controller"

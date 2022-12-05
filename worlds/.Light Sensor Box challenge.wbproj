@@ -6,5 +6,6 @@ maximizedDockId: -1
 centralWidgetVisible: 1
 orthographicViewHeight: 1
 textFiles: -1
+robotWindow: robot
 consoles: Console:All:All
 renderingDevicePerspectives: Pioneer 3-DX:colorSensor;1;3.2;0;0
