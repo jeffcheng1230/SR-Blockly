@@ -1,14 +1,21 @@
-#VRML_SIM R2020b utf8
+#VRML_SIM R2023a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/apartment_structure/protos/Wall.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/robots/adept/pioneer3/protos/Pioneer3dx.proto"
+
 WorldInfo {
-  coordinateSystem "NUE"
 }
 Viewpoint {
-  orientation 0.9251203630072125 0.3508348502487668 0.1451455193946019 5.442137801127191
-  position -0.07262460522737657 1.054634150491071 1.3139438506349923
+  orientation -0.24330112994859648 0.12950914545985956 0.9612658016428095 2.1957059551094265
+  position 4.675272037440021 -7.937488288368625 6.277860685937786
 }
 TexturedBackground {
 }
 TexturedBackgroundLight {
+  luminosity 2
 }
 DEF BlocklySupervisor Robot {
   name "Supervisor"
