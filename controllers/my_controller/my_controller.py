@@ -1,3 +1,4 @@
+sensor1 = None
 lm = None
 rm = None
 
@@ -67,6 +68,8 @@ encCount = {}
 lastEncReset = {}
 myRobot.step(timeStep)
 
+sensor1 = myRobot.getDevice('distanceSensor')
+sensor1.enable(timeStep)
 lm = myRobot.getDevice("left wheel")
 encObj[lm] = lm.getPositionSensor()
 lm.setPosition(float("inf"))
@@ -88,4 +91,4 @@ rm.setVelocity((20 / 100.0) * rm.getMaxVelocity())
 while myRobot.step(timeStep) != -1 and True:
   if gyroEnable:
     updateGyro()
-  print(getEncoders(encObj[lm]) or encCount[encObj[lm]] - lastEncReset[encObj[lm]])
+  print(sensor1.getValue())

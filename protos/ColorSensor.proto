@@ -12,7 +12,7 @@ PROTO ColorSensor [
 		children [
 			Lidar {
 				translation 0 0 0.011
-				rotation 0.577 0.577 0.577 2.09
+				rotation -0.577351 0.577349 0.577351 2.0944
 				scale 0.5 0.5 0.5
 				children [
 					DEF LINK Transform {
@@ -32,53 +32,7 @@ PROTO ColorSensor [
 							}
 						]
 					}
-					DEF BASE Transform {
-						translation 0 -0.070665 0
-						children [
-							Shape {
-								appearance DEF COLOR PBRAppearance {
-									baseColor 0.6 0.6 0.6
-									roughness 0.3
-									metalness 0
-								}
-								geometry Cylinder {
-									height 0.05867
-									radius 0.04267
-									subdivision 24
-								}
-							}
-						]
-					}
-					DEF LOGO Transform {
-						translation 0 -0.070665 0
-						rotation 0 1 0 3.14159
-						children [
-							Shape {
-								appearance PBRAppearance {
-									baseColorMap ImageTexture {
-										url [
-											"textures/velodyne.png"
-										]
-										repeatS FALSE
-										repeatT FALSE
-									}
-									roughness 0.6
-									metalness 0
-									textureTransform TextureTransform {
-										scale 3.5 3.5
-										translation -0.38 -0.3
-									}
-								}
-								geometry Cylinder {
-									bottom FALSE
-									height 0.05867
-									radius 0.0435
-									top FALSE
-									subdivision 24
-								}
-							}
-						]
-					}
+				
 				]
 				name "Velodyne HDL-32E"
 				model "Velodyne HDL-32E"
