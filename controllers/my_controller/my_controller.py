@@ -1,3 +1,8 @@
+lm = None
+rm = None
+light_Sensor = None
+
+
 from controller import Robot
 from controller import GPS
 from controller import LightSensor
@@ -63,7 +68,34 @@ encCount = {}
 lastEncReset = {}
 myRobot.step(timeStep)
 
-print('hello')
-for x in range(20):
+lm = myRobot.getDevice("left wheel")
+encObj[lm] = lm.getPositionSensor()
+lm.setPosition(float("inf"))
+lm.setVelocity(0)
+encObj[lm].enable(timeStep)
+encCount[lm] = 0
+lastEncReset[encObj[lm]] = 0
+
+rm = myRobot.getDevice("right wheel")
+encObj[rm] = rm.getPositionSensor()
+rm.setPosition(float("inf"))
+rm.setVelocity(0)
+encObj[rm].enable(timeStep)
+encCount[rm] = 0
+lastEncReset[encObj[rm]] = 0
+
+light_Sensor = myRobot.getDevice('colorSensor')
+light_Sensor.enable(timeStep)
+for x in range(1):
 	myRobot.step(timeStep)
-print('hello')
+lm.setVelocity((10 / 100.0) * lm.getMaxVelocity())
+rm.setVelocity((10 / 100.0) * rm.getMaxVelocity())
+while myRobot.step(timeStep) != -1 and True:
+  if gyroEnable:
+    updateGyro()
+  if (getLSGray(light_Sensor.getImageArray())) >= 130:
+    rm.setVelocity((25 / 100.0) * rm.getMaxVelocity())
+    lm.setVelocity((0 / 100.0) * lm.getMaxVelocity())
+  else:
+    rm.setVelocity((0 / 100.0) * rm.getMaxVelocity())
+    lm.setVelocity((25 / 100.0) * lm.getMaxVelocity())
