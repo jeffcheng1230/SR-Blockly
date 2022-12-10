@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import *
 from tkinter import filedialog
 from PIL import Image, ImageTk
 
@@ -18,7 +19,7 @@ def getGrid(x, y):
 
 def placeTile(widget):
     global tiles
-    filename = filedialog.askopenfilename()
+    filename = filedialog.askopenfilename(initialdir='../tiles')
     if filename != '':
         ind = getGrid(widget.winfo_x(), widget.winfo_y())
         tiles[ind] = getImg(filename).resize((100, 100))
@@ -142,7 +143,7 @@ def makeWorld():
     curDir = E
     dirAngle = [0, 4.71, 3.14, 1.57]
     header = open('worldHeader.txt', 'r')
-    file = open('../worlds/' + worldName + '.wbt', 'w')
+    file = open('../OLD WORLDS/' + worldName + '.wbt', 'w')
     file.write(header.read())
 
     i = 0
@@ -359,11 +360,17 @@ def enterTiles():
     tilePhotos = [0] * (numRow * numCol)
 
     mapWindow = tk.Toplevel(root)
-    mapCanvas = tk.Canvas(mapWindow, width=numCol * tileImgSize, height=(numRow) * tileImgSize + offset + 120)
+    #mapCanvas = tk.Canvas(mapWindow, width=numCol * tileImgSize, height=(numRow) * tileImgSize + offset + 120)
+    screenWidth = Tk.winfo_screenwidth(root)
+    screenHeight = Tk.winfo_screenheight(root)
+    mapCanvas = tk.Canvas(mapWindow, width=screenWidth, height=screenHeight)
     mapCanvas.pack()
 
-    x = numCol * tileImgSize / 2
+    #x = numCol * tileImgSize / 2
     y = numRow * (tileImgSize + 1) + tileImgSize / 2 + 10
+    x = int(screenWidth/2)
+    #y = int((screenHeight/2)+40)
+    print(x, y)
     obstacleLabel = tk.Label(mapWindow, text='Obstacle tiles')
     checkpointLabel = tk.Label(mapWindow, text='Checkpoint tiles')
     speedbumpLabel = tk.Label(mapWindow, text='Speed bump tiles')
@@ -403,7 +410,7 @@ S = 2
 W = 3
 
 tileOptions = 30
-tileImgSize = 100
+tileImgSize = 50
 tileSize = 1.0
 numRow = 0
 numCol = 0
@@ -435,8 +442,8 @@ rootCanvas.pack()
 mapWindow = None
 mapCanvas = None
 
-selectTileImg = getImg('GUI/selectTile.png')
-selectTilePhoto = getPhoto(selectTileImg)
+selectTileImg = getImg('GUI/selectTile.png').resize((tileImgSize, tileImgSize))
+#selectTilePhoto = getPhoto(selectTileImg)
 
 worldNameLabel = tk.Label(root, text='World Name (exclude .wbt)')
 numRowLabel = tk.Label(root, text='Number of Rows')

@@ -1,253 +1,87 @@
-#VRML_SIM R2021a utf8
+#VRML_SIM R2023a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/apartment_structure/protos/Wall.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/robots/adept/pioneer3/protos/Pioneer3dx.proto"
+
 WorldInfo {
-  coordinateSystem "NUE"
 }
 Viewpoint {
-  orientation 0.6033950396050884 -0.5784827565279724 -0.5488826163942275 4.2744406876589265
-  position 1.6414307837816668 7.766818761708719 2.503083930726624
+  orientation -0.24330112994859648 0.12950914545985956 0.9612658016428095 2.1957059551094265
+  position 4.675272037440021 -7.937488288368625 6.277860685937786
 }
 TexturedBackground {
 }
 TexturedBackgroundLight {
+  luminosity 2
 }
 DEF BlocklySupervisor Robot {
   name "Supervisor"
   controller "supervisor"
   supervisor TRUE
   window "blockly"
-}
-DEF Obstacles Group {
-  children [
-    Solid {
-      translation 1 0.2 0
-      scale 4.3 4.3 4.3
-      children [
-        Shape {
-          appearance Appearance {
-            material Material {
-              diffuseColor 0.2 0.2 0.8
-            }
-          }
-          geometry Cylinder {
-            height 0.1
-            radius 0.05
-          }
-        }
-      ]
-      name "obstacle1"
-      boundingObject Shape {
-        appearance Appearance {
-          material Material {
-            diffuseColor 0.2 0.2 0.8
-          }
-        }
-        geometry Cylinder {
-          height 0.1
-          radius 0.05
-        }
-      }
-    }
-  ]
+}DEF Obstacles Group {
+  children [ ]
 }
 DEF Speedbumps Group {
   children [
-    speedbump {
-      translation 1 0 1
-      rotation -0.5773502691896258 0.5773502691896258 -0.5773502691896258 2.09
-      name "speedbump0"
-    }
   ]
 }
 DEF Seesaw Group {
   children [
-    seesaw {
-      translation 3 0.1 1
-      rotation 0 1 0 -1.57
-      name "seesaw0"
-    }
   ]
 }
 DEF Tiles Group {
   children [
     Solid {
-      translation 2.35 0 0.85
-      description "2,5,;0,1,2,;;8,;1,;;;6,;;,,;,;,;"
+      description "5,5,;0,1,2,7,;;;;;;;;,,;,;,;"      translation 2.35 0 2.35
       boundingObject Plane {
-        size 5 2
+        size 5.0 5.0
       }
     }
     Solid {
+      translation 1.0 0 0.0
+      rotation 0 1 0 0
       children [
-        Shape {
-          appearance Appearance {
-            texture ImageTexture {
-              url [
-                "../tiles/0.png"
+        Shape{
+          appearance Appearance{
+            texture ImageTexture{
+              url[
+                "../tiles/5.png"
               ]
             }
           }
           geometry Plane {
-          }
-        }
-      ]
-      name "solid0"
-    }
-    Solid {
-      translation 1 0 0
-      children [
-        Shape {
-          appearance Appearance {
-            texture ImageTexture {
-              url [
-                "../tiles/1.png"
-              ]
-            }
-          }
-          geometry Plane {
+            size 1.0 1.0
           }
         }
       ]
       name "solid1"
     }
     Solid {
-      translation 2 0 0
+      translation 3.0 0 1.0
+      rotation 0 1 0 0
       children [
-        Shape {
-          appearance Appearance {
-            texture ImageTexture {
-              url [
-                "../tiles/0.png"
+        Shape{
+          appearance Appearance{
+            texture ImageTexture{
+              url[
+                "../tiles/3.png"
               ]
             }
           }
           geometry Plane {
-          }
-        }
-      ]
-      name "solid2"
-    }
-    Solid {
-      translation 3 0 0
-      children [
-        Shape {
-          appearance Appearance {
-            texture ImageTexture {
-              url [
-                "../tiles/0.png"
-              ]
-            }
-          }
-          geometry Plane {
-          }
-        }
-      ]
-      name "solid3"
-    }
-    Solid {
-      translation 4 0 0
-      children [
-        Shape {
-          appearance Appearance {
-            texture ImageTexture {
-              url [
-                "../tiles/0.png"
-              ]
-            }
-          }
-          geometry Plane {
-          }
-        }
-      ]
-      name "solid4"
-    }
-    Solid {
-      translation 0 0 1
-      children [
-        Shape {
-          appearance Appearance {
-            texture ImageTexture {
-              url [
-                "../tiles/0.png"
-              ]
-            }
-          }
-          geometry Plane {
-          }
-        }
-      ]
-      name "solid5"
-    }
-    Solid {
-      translation 1 0 1
-      children [
-        Shape {
-          appearance Appearance {
-            texture ImageTexture {
-              url [
-                "../tiles/0.png"
-              ]
-            }
-          }
-          geometry Plane {
-          }
-        }
-      ]
-      name "solid6"
-    }
-    Solid {
-      translation 2 0 1
-      children [
-        Shape {
-          appearance Appearance {
-            texture ImageTexture {
-              url [
-                "../tiles/0.png"
-              ]
-            }
-          }
-          geometry Plane {
-          }
-        }
-      ]
-      name "solid7"
-    }
-    Solid {
-      translation 3 0 1
-      children [
-        Shape {
-          appearance Appearance {
-            texture ImageTexture {
-              url [
-                "../tiles/0.png"
-              ]
-            }
-          }
-          geometry Plane {
+            size 1.0 1.0
           }
         }
       ]
       name "solid8"
     }
-    Solid {
-      translation 4 0 1
-      children [
-        Shape {
-          appearance Appearance {
-            texture ImageTexture {
-              url [
-                "../tiles/0.png"
-              ]
-            }
-          }
-          geometry Plane {
-          }
-        }
-      ]
-      name "solid9"
-    }
   ]
 }
 DEF Checkpoints Group {
-}
-rescueZone {
+  children [
+  ]
 }
